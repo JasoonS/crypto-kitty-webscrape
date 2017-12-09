@@ -5,13 +5,14 @@ var cheerio = require('cheerio');
 url = 'https://cryptokittydex.com/cattributes';
 
 let catData = {}
+
 request(url, function (error, response, html) {
     if(error || response.statusCode != 200) return
 
     var $ = cheerio.load(html)
     $('ul.list-cattributes').find('li').each(function(i, e){
 
-      let info = $(this).find('.cattribute-info-layer')//.text()
+      let info = $(this).find('.cattribute-info-layer')
       if (info.html() != null) {
         var res = info.text().split("\n")
 
